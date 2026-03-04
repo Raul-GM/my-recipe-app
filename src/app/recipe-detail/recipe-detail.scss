@@ -1,0 +1,81 @@
+$primary: #1a237e;
+$accent: #ffb300;
+$background: #f5f7fa;
+
+.recipe-detail {
+  background: linear-gradient(120deg, $background 70%, #e3e6f3 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(26,35,126,0.07);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.recipe-detail__content {
+  width: 100%;
+}
+
+.recipe-detail__title {
+  font-family: 'Montserrat', 'Avenir Next', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: $primary;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-detail__meta {
+  margin-bottom: 1.5rem;
+}
+
+.recipe-detail__badge {
+  display: inline-block;
+  background: $accent;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 1rem;
+  padding: 0.3em 1.2em;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.recipe-detail__subtitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $primary;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-detail__ingredients {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.2rem;
+  list-style: disc inside;
+  color: #333;
+  font-size: 1rem;
+}
+
+.recipe-detail__instructions {
+  color: #222;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.recipe-detail__empty {
+  width: 100%;
+  text-align: center;
+  color: #888;
+  font-size: 1.15rem;
+  margin-top: 2.5rem;
+  padding: 2rem 1rem;
+  background: #f8fafc;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(26,35,126,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

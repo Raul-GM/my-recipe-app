@@ -1,0 +1,57 @@
+@use 'sass:color';
+
+$primary: #1a237e;
+$accent: #ffb300;
+$background: #f5f7fa;
+$btn-radius: 2rem;
+$btn-shadow: 0 2px 8px rgba(26,35,126,0.08);
+$transition: 0.18s cubic-bezier(.4,0,.2,1);
+
+.category-filter {
+  background: linear-gradient(90deg, $background 60%, #e3e6f3 100%);
+  padding: 1.5rem 2rem 1.2rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(26,35,126,0.07);
+  margin: 2rem auto 1.5rem auto;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  ul {
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.category-btn {
+  font-family: 'Montserrat', 'Avenir Next', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  color: $primary;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: $btn-radius;
+  padding: 0.6em 1.6em;
+  cursor: pointer;
+  box-shadow: $btn-shadow;
+  transition: background $transition, color $transition, border-color $transition, box-shadow $transition;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  &:hover,
+  &:focus-visible {
+    background: color.scale($accent, $lightness: 30%);
+    color: #fff;
+    border-color: $accent;
+    box-shadow: 0 0 0 3px color.scale($accent, $lightness: 60%);
+  }
+  &.selected {
+    background: $accent;
+    color: #fff;
+    border-color: $accent;
+    box-shadow: 0 0 0 3px color.scale($accent, $lightness: 60%);
+  }
+}

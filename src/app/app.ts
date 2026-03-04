@@ -12,3 +12,6 @@ export class App {
 }
 export * from './recipe-card/recipe-card';
 export * from './recipe-list/recipe-list';
+export * from './category-filter/category-filter';
+export * from './recipe-detail/recipe-detail';
+export * from './recipe-form/recipe-form';

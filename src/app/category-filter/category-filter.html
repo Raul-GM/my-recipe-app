@@ -1,0 +1,17 @@
+<nav class="category-filter" aria-label="Filtrar por categoría">
+  <ul>
+    @for (category of categories; track category) {
+      <li>
+        <button
+          type="button"
+          class="category-btn"
+          [class.selected]="selectedCategory() === category"
+          (click)="selectCategory(category)"
+          aria-pressed="{{selectedCategory() === category}}"
+        >
+          {{ category | titlecase }}
+        </button>
+      </li>
+    }
+  </ul>
+</nav>

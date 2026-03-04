@@ -1,0 +1,22 @@
+<section class="recipe-detail" aria-label="Detalle de la receta">
+  @if (recipe()) {
+    <div class="recipe-detail__content">
+      <h2 class="recipe-detail__title">{{ recipe()!.name }}</h2>
+      <div class="recipe-detail__meta">
+        <span class="recipe-detail__badge">{{ recipe()!.category }}</span>
+      </div>
+      <h3 class="recipe-detail__subtitle">Ingredientes</h3>
+      <ul class="recipe-detail__ingredients">
+        @for (ingredient of recipe()!.ingredients; track ingredient) {
+          <li>{{ ingredient }}</li>
+        }
+      </ul>
+      <h3 class="recipe-detail__subtitle">Preparación</h3>
+      <p class="recipe-detail__instructions">{{ recipe()!.instructions }}</p>
+    </div>
+  } @else {
+    <div class="recipe-detail__empty" role="status" aria-live="polite">
+      <span>Selecciona una receta de la lista para ver los detalles.</span>
+    </div>
+  }
+</section>
