@@ -1,0 +1,28 @@
+.recipe-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 1rem;
+}
+.recipe-card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+.badge-breakfast { background: #ffb74d; }
+.badge-lunch { background: #4fc3f7; }
+.badge-dinner { background: #9575cd; }
+.badge-dessert { background: #f06292; }
+.badge-snack { background: #aed581; }
+.badge-other { background: #90a4ae; }

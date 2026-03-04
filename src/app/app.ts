@@ -10,3 +10,5 @@ import { RouterOutlet } from '@angular/router';
 export class App {
   protected readonly title = signal('my-recipe-app');
 }
+export * from './recipe-card/recipe-card';
+export * from './recipe-list/recipe-list';

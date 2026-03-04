@@ -1,0 +1,8 @@
+<article class="recipe-card" (click)="selected.emit(recipe().id)" tabindex="0" role="button" aria-pressed="false">
+  <header>
+    <h2>{{ recipe().name }}</h2>
+    <span class="badge badge-{{ recipe().category }}">
+      {{ recipe().category }}
+    </span>
+  </header>
+</article>

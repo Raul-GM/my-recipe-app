@@ -1,0 +1,14 @@
+<section class="recipe-list" aria-label="Lista de recetas">
+  <ul>
+    @for (recipe of recipes(); track recipe.id) {
+      <li class="recipe-list__item">
+        <app-recipe-card [recipe]="recipe" (selected)="handleRecipeSelected($event)" />
+      </li>
+    }
+  </ul>
+  @if (recipes().length === 0) {
+    <div class="recipe-list__empty" role="status" aria-live="polite">
+      No hay recetas disponibles.
+    </div>
+  }
+</section>
