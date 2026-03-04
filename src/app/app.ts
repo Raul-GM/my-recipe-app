@@ -15,3 +15,4 @@ export * from './recipe-list/recipe-list';
 export * from './category-filter/category-filter';
 export * from './recipe-detail/recipe-detail';
 export * from './recipe-form/recipe-form';
+export * from './app-root/app-root';
