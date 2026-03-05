@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $primary: #1a237e;
 $accent: #ffb300;
 $background: #f5f7fa;
@@ -36,7 +38,7 @@ $background: #f5f7fa;
   transition: background 0.18s cubic-bezier(.4,0,.2,1);
   &:hover,
   &:focus {
-    background: color.scale($accent, $lightness: -10%);
+    background: color.adjust($accent, $lightness: -10%);
   }
 }
 

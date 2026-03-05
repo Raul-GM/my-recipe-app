@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, Component, output, signal, computed } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
+import { TitleCasePipe } from '@angular/common';
 import { RecipeCategory, Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-form',
   templateUrl: './recipe-form.html',
   styleUrls: ['./recipe-form.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ReactiveFormsModule, TitleCasePipe],
 })
 
 export class RecipeFormComponent {

@@ -1,9 +1,8 @@
+
 import { createClient } from '@supabase/supabase-js';
+import { environment } from '../environments/environment';
 
-// Las variables de entorno deben estar definidas en el entorno de Angular
-declare const process: { env: { [key: string]: string } };
-
-const supabaseUrl = process.env['NG_APP_SUPABASE_URL']!;
-const supabaseAnonKey = process.env['NG_APP_SUPABASE_ANON_KEY']!;
+const supabaseUrl = environment.supabaseUrl;
+const supabaseAnonKey = environment.supabaseAnonKey;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

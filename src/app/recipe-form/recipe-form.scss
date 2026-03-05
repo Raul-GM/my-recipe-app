@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $primary: #1a237e;
 $accent: #ffb300;
 $background: #f5f7fa;
@@ -40,7 +42,7 @@ textarea {
   outline: none;
   &:focus {
     border-color: $accent;
-    box-shadow: 0 0 0 2px color.scale($accent, $lightness: 60%);
+    box-shadow: 0 0 0 2px color.adjust($accent, $lightness: 20%);
   }
 }
 
@@ -66,7 +68,7 @@ textarea {
   transition: background 0.18s cubic-bezier(.4,0,.2,1);
   &:hover,
   &:focus {
-    background: color.scale($accent, $lightness: -10%);
+    background: color.adjust($accent, $lightness: -10%);
   }
 }
 
@@ -104,7 +106,7 @@ textarea {
   transition: background 0.18s cubic-bezier(.4,0,.2,1);
   &:hover,
   &:focus {
-    background: color.scale($primary, $lightness: -10%);
+    background: color.adjust($primary, $lightness: -10%);
   }
   &:disabled {
     background: #bdbdbd;

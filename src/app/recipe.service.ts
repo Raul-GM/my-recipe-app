@@ -1,7 +1,8 @@
-import { signal, computed, inject } from '@angular/core';
+import { signal, computed, Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { supabase } from './supabase.config';
 
+@Injectable({ providedIn: 'root' })
 export class RecipeService {
   // Signal para almacenar la lista de recetas
   private readonly _recipes = signal<Recipe[]>([]);
@@ -46,6 +47,3 @@ export class RecipeService {
     }
   }
 }
-
-// Exportar una instancia singleton usando inject()
-export const recipeService = inject(RecipeService);
