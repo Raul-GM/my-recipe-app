@@ -6,7 +6,7 @@ import { RecipeFormComponent } from '../recipe-form/recipe-form';
 import { Recipe, RecipeCategory } from '../recipe.model';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-recipe-core',
   standalone: true,
   imports: [CategoryFilterComponent, RecipeListComponent, RecipeDetailComponent, RecipeFormComponent],
   templateUrl: './app-root.html',

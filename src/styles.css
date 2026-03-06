@@ -1,3 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+:root {
+  --color-bg: #F7F5EF; /* Warm organic bone color */
+  --color-surface: #EBE5D9;
+  --color-text: #1C1E1B; /* Very dark forest tone */
+  --color-text-muted: #64685D;
+  --color-accent: #4A5D23; /* Deep olive green */
+  --color-accent-light: #6A7A44;
+  --color-border: #D1CAB8;
+  
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
