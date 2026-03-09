@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, signal, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, computed, inject } from '@angular/core';
 import { CategoryFilterComponent } from '../category-filter/category-filter';
 import { RecipeListComponent } from '../recipe-list/recipe-list';
 import { RecipeDetailComponent } from '../recipe-detail/recipe-detail';
 import { RecipeFormComponent } from '../recipe-form/recipe-form';
 import { Recipe, RecipeCategory } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-core',
@@ -18,6 +19,8 @@ export class AppRootComponent {
   showForm = signal(false);
   selectedCategory = signal<RecipeCategory | null>(null);
   selectedRecipe = signal<Recipe | undefined>(undefined);
+
+  private readonly recipeService = inject(RecipeService);
 
   // Alternar entre lista y formulario
   toggleForm() {
@@ -35,17 +38,21 @@ export class AppRootComponent {
 
   // Seleccionar receta
   onRecipeSelected(recipeId: string) {
-    // Aquí deberías buscar la receta por ID en tu servicio o lista
-    // Por simplicidad, solo guardamos el ID
-    this.selectedRecipe.set({ id: recipeId } as Recipe);
+    const recipes = this.recipeService.recipes();
+    const recipe = recipes.find(r => r.id === recipeId);
+    this.selectedRecipe.set(recipe);
     this.showForm.set(false);
   }
 
   // Cuando se crea una receta
-  onRecipeCreated(recipe: Omit<Recipe, 'id' | 'imageUrl'>) {
-    // Aquí deberías añadir la receta al servicio
+  async onRecipeCreated(recipeData: Omit<Recipe, 'id' | 'imageUrl'>) {
+    const newRecipeData: Omit<Recipe, 'id'> = {
+      ...recipeData,
+      imageUrl: 'https://images.unsplash.com/photo-1466632311177-d3d6396e9521?q=80&w=2000' // Placeholder image
+    };
+
+    await this.recipeService.addRecipe(newRecipeData);
     this.showForm.set(false);
-    // Podrías actualizar la lista de recetas si gestionas el estado aquí
   }
 
   // Limpiar selección

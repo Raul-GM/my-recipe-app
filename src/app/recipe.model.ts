@@ -8,7 +8,7 @@ export enum RecipeCategory {
 }
 
 export interface Recipe {
-  id: string;
+  id: string | number;
   name: string;
   ingredients: string[];
   instructions: string;

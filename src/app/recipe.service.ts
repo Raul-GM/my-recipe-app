@@ -19,21 +19,31 @@ export class RecipeService {
   }
 
   async fetchRecipes() {
-    const { data, error } = await supabase
-      .from('recipes')
-      .select('*');
-    if (!error && data) {
-      this._recipes.set(data as Recipe[]);
+    try {
+      const { data, error } = await supabase
+        .from('recipes')
+        .select('*');
+      if (error) throw error;
+      if (data) {
+        this._recipes.set(data as Recipe[]);
+      }
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
     }
   }
 
-  async addRecipe(recipe: Recipe) {
-    const { data, error } = await supabase
-      .from('recipes')
-      .insert([recipe])
-      .select();
-    if (!error && data) {
-      this._recipes.update((recipes) => [...recipes, ...data as Recipe[]]);
+  async addRecipe(recipe: Omit<Recipe, 'id'>) {
+    try {
+      const { data, error } = await supabase
+        .from('recipes')
+        .insert([recipe])
+        .select();
+      if (error) throw error;
+      if (data) {
+        this._recipes.update((recipes) => [...recipes, ...data as Recipe[]]);
+      }
+    } catch (error) {
+      console.error('Error adding recipe:', error);
     }
   }
 

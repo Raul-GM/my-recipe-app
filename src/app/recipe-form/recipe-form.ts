@@ -47,7 +47,7 @@ export class RecipeFormComponent {
       this.recipeCreated.emit({
         name: this.form.value.name,
         category: this.form.value.category as RecipeCategory,
-        ingredients: this.form.value.ingredients,
+        ingredients: this.form.value.ingredients.filter((i: string) => i.trim() !== ''),
         instructions: this.form.value.instructions
       });
       this.form.reset();
