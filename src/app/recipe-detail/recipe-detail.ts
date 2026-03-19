@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, computed } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs/operators';
+import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -9,5 +13,15 @@ import { Recipe } from '../recipe.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipeDetailComponent {
-  recipe = input<Recipe | undefined>();
+  private readonly route = inject(ActivatedRoute);
+  private readonly recipeService = inject(RecipeService);
+
+  private readonly id = toSignal(
+    this.route.paramMap.pipe(map(params => params.get('id')))
+  );
+
+  recipe = computed(() => {
+    const recipeId = this.id();
+    return recipeId ? this.recipeService.getRecipeById(recipeId) : undefined;
+  });
 }

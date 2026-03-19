@@ -1,9 +1,9 @@
 <div class="app-root">
   <header class="app-header">
     <h1 class="app-title">My Recipe App</h1>
-    <button class="toggle-btn" (click)="toggleForm()">
-      {{ showForm() ? 'Ver recetas' : 'Añadir receta' }}
-    </button>
+    <a routerLink="new" class="toggle-btn">
+      Añadir receta
+    </a>
   </header>
 
   <app-category-filter (categoryChanged)="onCategoryChanged($event)"></app-category-filter>
@@ -12,15 +12,10 @@
     <aside class="app-sidebar">
       <app-recipe-list
         [category]="selectedCategory()"
-        (selected)="onRecipeSelected($event)"
       ></app-recipe-list>
     </aside>
     <section class="app-content">
-      @if (showForm()) {
-        <app-recipe-form (recipeCreated)="onRecipeCreated($event)"></app-recipe-form>
-      } @else {
-        <app-recipe-detail [recipe]="selectedRecipe()"></app-recipe-detail>
-      }
+      <router-outlet></router-outlet>
     </section>
   </main>
 </div>
