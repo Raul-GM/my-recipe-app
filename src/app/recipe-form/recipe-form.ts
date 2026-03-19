@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, output, signal, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, computed } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 import { RecipeCategory, Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-form',
@@ -13,17 +15,15 @@ import { RecipeCategory, Recipe } from '../recipe.model';
 })
 
 export class RecipeFormComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly recipeService = inject(RecipeService);
+  private readonly router = inject(Router);
+
   readonly categories = Object.values(RecipeCategory);
-
-  // Use signals for local state if needed (e.g., loading, error, etc.)
   readonly isSubmitting = signal(false);
-
-  // Reactive Form
   readonly form: FormGroup;
 
-  recipeCreated = output<Omit<Recipe, 'id' | 'imageUrl'>>();
-
-  constructor(private readonly fb: FormBuilder) {
+  constructor() {
     this.form = this.fb.group({
       name: ['', Validators.required],
       category: ['', Validators.required],
@@ -41,21 +41,24 @@ export class RecipeFormComponent {
   // Computed signal for form validity (optional, for template use)
   readonly isFormValid = computed(() => this.form.valid);
 
-  onSubmit() {
+  async onSubmit() {
+    if (this.form.invalid) return;
+
     this.isSubmitting.set(true);
-    if (this.form.valid) {
-      this.recipeCreated.emit({
+    try {
+      const recipeData = {
         name: this.form.value.name,
         category: this.form.value.category as RecipeCategory,
         ingredients: this.form.value.ingredients.filter((i: string) => i.trim() !== ''),
-        instructions: this.form.value.instructions
-      });
-      this.form.reset();
-      // Reset ingredients to one empty field
-      this.ingredients.clear();
-      this.ingredients.push(this.fb.control('', Validators.required));
+        instructions: this.form.value.instructions,
+        imageUrl: 'https://images.unsplash.com/photo-1466632311177-d3d6396e9521?q=80&w=2000'
+      };
+
+      await this.recipeService.addRecipe(recipeData);
+      this.router.navigate(['/recipes']);
+    } finally {
+      this.isSubmitting.set(false);
     }
-    this.isSubmitting.set(false);
   }
 
   addIngredient() {

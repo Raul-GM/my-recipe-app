@@ -13,6 +13,10 @@ export class RecipeService {
   // Computed para obtener el número de recetas
   readonly recipeCount = computed(() => this._recipes().length);
 
+  getRecipeById(id: string) {
+    return this._recipes().find(r => r.id === id);
+  }
+
   constructor() {
     // Cargar recetas al inicializar el servicio
     this.fetchRecipes();
