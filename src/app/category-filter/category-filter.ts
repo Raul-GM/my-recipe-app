@@ -1,4 +1,3 @@
-
 import { Component, ChangeDetectionStrategy, signal, output } from '@angular/core';
 import { RecipeCategory } from '../recipe.model';
 import { TitleCasePipe } from '@angular/common';

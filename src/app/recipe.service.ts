@@ -14,7 +14,7 @@ export class RecipeService {
   readonly recipeCount = computed(() => this._recipes().length);
 
   getRecipeById(id: string) {
-    return this._recipes().find(r => r.id === id);
+    return this._recipes().find((r) => r.id === id);
   }
 
   constructor() {
@@ -24,9 +24,7 @@ export class RecipeService {
 
   async fetchRecipes() {
     try {
-      const { data, error } = await supabase
-        .from('recipes')
-        .select('*');
+      const { data, error } = await supabase.from('recipes').select('*');
       if (error) throw error;
       if (data) {
         this._recipes.set(data as Recipe[]);
@@ -38,13 +36,10 @@ export class RecipeService {
 
   async addRecipe(recipe: Omit<Recipe, 'id'>) {
     try {
-      const { data, error } = await supabase
-        .from('recipes')
-        .insert([recipe])
-        .select();
+      const { data, error } = await supabase.from('recipes').insert([recipe]).select();
       if (error) throw error;
       if (data) {
-        this._recipes.update((recipes) => [...recipes, ...data as Recipe[]]);
+        this._recipes.update((recipes) => [...recipes, ...(data as Recipe[])]);
       }
     } catch (error) {
       console.error('Error adding recipe:', error);
@@ -52,12 +47,9 @@ export class RecipeService {
   }
 
   async deleteRecipe(id: string) {
-    const { error } = await supabase
-      .from('recipes')
-      .delete()
-      .eq('id', id);
+    const { error } = await supabase.from('recipes').delete().eq('id', id);
     if (!error) {
-      this._recipes.update((recipes) => recipes.filter(r => r.id !== id));
+      this._recipes.update((recipes) => recipes.filter((r) => r.id !== id));
     }
   }
 }

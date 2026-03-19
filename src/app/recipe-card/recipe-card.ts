@@ -5,7 +5,7 @@ import { Recipe } from '../recipe.model';
   selector: 'app-recipe-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './recipe-card.html',
-  styleUrls: ['./recipe-card.css']
+  styleUrls: ['./recipe-card.css'],
 })
 export class RecipeCardComponent {
   recipe = input.required<Recipe>();

@@ -3,7 +3,7 @@
   border-radius: 8px;
   padding: 1rem;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   margin-bottom: 1rem;
 }
 .recipe-card header {
@@ -20,9 +20,21 @@
   color: #fff;
   text-transform: capitalize;
 }
-.badge-breakfast { background: #ffb74d; }
-.badge-lunch { background: #4fc3f7; }
-.badge-dinner { background: #9575cd; }
-.badge-dessert { background: #f06292; }
-.badge-snack { background: #aed581; }
-.badge-other { background: #90a4ae; }
+.badge-breakfast {
+  background: #ffb74d;
+}
+.badge-lunch {
+  background: #4fc3f7;
+}
+.badge-dinner {
+  background: #9575cd;
+}
+.badge-dessert {
+  background: #f06292;
+}
+.badge-snack {
+  background: #aed581;
+}
+.badge-other {
+  background: #90a4ae;
+}

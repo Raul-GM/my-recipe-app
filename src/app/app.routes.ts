@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: AppRootComponent,
     children: [
       { path: 'new', component: RecipeFormComponent },
-      { path: ':id', component: RecipeDetailComponent }
-    ]
-  }
+      { path: ':id', component: RecipeDetailComponent },
+    ],
+  },
 ];

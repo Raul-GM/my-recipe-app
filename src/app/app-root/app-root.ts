@@ -11,7 +11,7 @@ import { RecipeService } from '../recipe.service';
   imports: [CategoryFilterComponent, RecipeListComponent, RouterOutlet, RouterLink],
   templateUrl: './app-root.html',
   styleUrls: ['./app-root.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppRootComponent {
   // Señales para la UI

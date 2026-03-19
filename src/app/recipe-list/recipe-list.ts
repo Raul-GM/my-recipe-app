@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject, signal, input, output, computed } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+  input,
+  output,
+  computed,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { RecipeCardComponent } from '../recipe-card/recipe-card';
@@ -9,7 +17,7 @@ import { RecipeCategory, Recipe } from '../recipe.model';
   imports: [RecipeCardComponent],
   templateUrl: './recipe-list.html',
   styleUrls: ['./recipe-list.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecipeListComponent {
   private readonly recipeService = inject(RecipeService);
@@ -21,7 +29,7 @@ export class RecipeListComponent {
   recipes = computed(() => {
     const all = this.recipeService.recipes();
     const cat = this.category();
-    return cat ? all.filter(r => r.category === cat) : all;
+    return cat ? all.filter((r) => r.category === cat) : all;
   });
 
   handleRecipeSelected(id: string) {

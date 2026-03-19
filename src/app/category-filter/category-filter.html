@@ -7,7 +7,7 @@
           class="category-btn"
           [class.selected]="selectedCategory() === category"
           (click)="selectCategory(category)"
-          aria-pressed="{{selectedCategory() === category}}"
+          aria-pressed="{{ selectedCategory() === category }}"
         >
           {{ category | titlecase }}
         </button>
