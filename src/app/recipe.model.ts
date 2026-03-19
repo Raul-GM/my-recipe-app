@@ -4,7 +4,7 @@ export enum RecipeCategory {
   Dinner = 'dinner',
   Dessert = 'dessert',
   Snack = 'snack',
-  Other = 'other'
+  Other = 'other',
 }
 
 export interface Recipe {

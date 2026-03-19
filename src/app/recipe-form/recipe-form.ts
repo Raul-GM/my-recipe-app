@@ -13,7 +13,6 @@ import { RecipeService } from '../recipe.service';
   standalone: true,
   imports: [ReactiveFormsModule, TitleCasePipe],
 })
-
 export class RecipeFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly recipeService = inject(RecipeService);
@@ -27,10 +26,8 @@ export class RecipeFormComponent {
     this.form = this.fb.group({
       name: ['', Validators.required],
       category: ['', Validators.required],
-      ingredients: this.fb.array([
-        this.fb.control('', Validators.required)
-      ], Validators.required),
-      instructions: ['', Validators.required]
+      ingredients: this.fb.array([this.fb.control('', Validators.required)], Validators.required),
+      instructions: ['', Validators.required],
     });
   }
 
@@ -51,7 +48,7 @@ export class RecipeFormComponent {
         category: this.form.value.category as RecipeCategory,
         ingredients: this.form.value.ingredients.filter((i: string) => i.trim() !== ''),
         instructions: this.form.value.instructions,
-        imageUrl: 'https://images.unsplash.com/photo-1466632311177-d3d6396e9521?q=80&w=2000'
+        imageUrl: 'https://images.unsplash.com/photo-1466632311177-d3d6396e9521?q=80&w=2000',
       };
 
       await this.recipeService.addRecipe(recipeData);

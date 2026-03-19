@@ -1,18 +1,14 @@
 <div class="app-root">
   <header class="app-header">
     <h1 class="app-title">My Recipe App</h1>
-    <a routerLink="new" class="toggle-btn">
-      Añadir receta
-    </a>
+    <a routerLink="new" class="toggle-btn"> Añadir receta </a>
   </header>
 
   <app-category-filter (categoryChanged)="onCategoryChanged($event)"></app-category-filter>
 
   <main class="app-main">
     <aside class="app-sidebar">
-      <app-recipe-list
-        [category]="selectedCategory()"
-      ></app-recipe-list>
+      <app-recipe-list [category]="selectedCategory()"></app-recipe-list>
     </aside>
     <section class="app-content">
       <router-outlet></router-outlet>

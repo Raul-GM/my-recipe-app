@@ -10,15 +10,13 @@ import { Recipe } from '../recipe.model';
   standalone: true,
   templateUrl: './recipe-detail.html',
   styleUrls: ['./recipe-detail.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecipeDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly recipeService = inject(RecipeService);
 
-  private readonly id = toSignal(
-    this.route.paramMap.pipe(map(params => params.get('id')))
-  );
+  private readonly id = toSignal(this.route.paramMap.pipe(map((params) => params.get('id'))));
 
   recipe = computed(() => {
     const recipeId = this.id();

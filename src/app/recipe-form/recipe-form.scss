@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 $primary: #1a237e;
 $accent: #ffb300;
@@ -8,7 +8,7 @@ $border: #e0e0e0;
 .recipe-form {
   background: linear-gradient(120deg, $background 70%, #e3e6f3 100%);
   border-radius: 1.5rem;
-  box-shadow: 0 4px 24px rgba(26,35,126,0.07);
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.07);
   padding: 2.5rem 2rem 2rem 2rem;
   max-width: 600px;
   margin: 2rem auto 0 auto;
@@ -29,7 +29,7 @@ label {
   margin-bottom: 0.2rem;
 }
 
-input[type="text"],
+input[type='text'],
 select,
 textarea {
   border: 1.5px solid $border;
@@ -38,7 +38,7 @@ textarea {
   font-size: 1rem;
   font-family: inherit;
   background: #fff;
-  transition: border-color 0.18s cubic-bezier(.4,0,.2,1);
+  transition: border-color 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
   &:focus {
     border-color: $accent;
@@ -65,7 +65,7 @@ textarea {
   font-size: 1rem;
   cursor: pointer;
   margin-top: 0.3rem;
-  transition: background 0.18s cubic-bezier(.4,0,.2,1);
+  transition: background 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     background: color.adjust($accent, $lightness: -10%);
@@ -103,7 +103,7 @@ textarea {
   cursor: pointer;
   margin-top: 0.7rem;
   align-self: flex-end;
-  transition: background 0.18s cubic-bezier(.4,0,.2,1);
+  transition: background 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     background: color.adjust($primary, $lightness: -10%);
