@@ -14,7 +14,7 @@ export class RecipeService {
   readonly recipeCount = computed(() => this._recipes().length);
 
   getRecipeById(id: string) {
-    return this._recipes().find(r => r.id === id);
+    return this._recipes().find(r => String(r.id) === id);
   }
 
   constructor() {
@@ -57,7 +57,25 @@ export class RecipeService {
       .delete()
       .eq('id', id);
     if (!error) {
-      this._recipes.update((recipes) => recipes.filter(r => r.id !== id));
+      this._recipes.update((recipes) => recipes.filter(r => String(r.id) !== id));
+    }
+  }
+
+  async updateRecipe(id: string, recipe: Partial<Recipe>) {
+    try {
+      const { data, error } = await supabase
+        .from('recipes')
+        .update(recipe)
+        .eq('id', id)
+        .select();
+      if (error) throw error;
+      if (data) {
+        this._recipes.update((recipes) =>
+          recipes.map((r) => (String(r.id) === id ? (data[0] as Recipe) : r))
+        );
+      }
+    } catch (error) {
+      console.error('Error updating recipe:', error);
     }
   }
 }

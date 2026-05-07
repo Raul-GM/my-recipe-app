@@ -1,7 +1,17 @@
 <section class="recipe-detail" aria-label="Detalle de la receta">
   @if (recipe()) {
     <div class="recipe-detail__content">
-      <h2 class="recipe-detail__title">{{ recipe()!.name }}</h2>
+      <div class="recipe-detail__header">
+        <h2 class="recipe-detail__title">{{ recipe()!.name }}</h2>
+        <div class="recipe-detail__actions">
+          <button class="btn btn--edit" (click)="onEdit()" aria-label="Editar receta">
+            Editar
+          </button>
+          <button class="btn btn--delete" (click)="onDelete()" [disabled]="isDeleting()" aria-label="Eliminar receta">
+            {{ isDeleting() ? 'Eliminando...' : 'Eliminar' }}
+          </button>
+        </div>
+      </div>
       <div class="recipe-detail__meta">
         <span class="recipe-detail__badge">{{ recipe()!.category }}</span>
       </div>

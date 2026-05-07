@@ -1,4 +1,6 @@
 <form class="recipe-form" (ngSubmit)="onSubmit()" [formGroup]="form">
+  <h2>{{ isEditing() ? 'Editar receta' : 'Nueva receta' }}</h2>
+  
   <div class="form-group">
     <label for="name">Nombre de la receta</label>
     <input id="name" type="text" formControlName="name" required aria-required="true" />
@@ -44,5 +46,5 @@
     }
   </div>
 
-  <button type="submit" class="submit-btn" [disabled]="!form.valid">Crear receta</button>
+  <button type="submit" class="submit-btn" [disabled]="!form.valid">{{ isEditing() ? 'Guardar cambios' : 'Crear receta' }}</button>
 </form>
