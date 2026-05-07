@@ -18,8 +18,19 @@
       }
     </select>
     @if (form.controls['category'].errors?.['required'] && form.controls['category'].touched) {
-      <span class="form-error">La categoría es obligatoria.</span>
+      <span class="form-error">La categoría es obligatory.</span>
     }
+  </div>
+
+  <div class="form-group">
+    <label for="rating">Valoración</label>
+    <div class="rating_stars">
+      @for (star of [1,2,3,4,5]; track star) {
+        <button type="button" class="star-btn" [class.filled]="form.value.rating >= star" (click)="form.patchValue({rating: star})" aria-label="Estrella {{ star }}">
+          ★
+        </button>
+      }
+    </div>
   </div>
 
   <div class="form-group">
@@ -44,6 +55,11 @@
     @if (form.controls['instructions'].errors?.['required'] && form.controls['instructions'].touched) {
       <span class="form-error">La preparación es obligatoria.</span>
     }
+  </div>
+
+  <div class="form-group">
+    <label for="notes">Notas</label>
+    <textarea id="notes" rows="3" formControlName="notes" placeholder="Notas adicionales sobre la receta..."></textarea>
   </div>
 
   <button type="submit" class="submit-btn" [disabled]="!form.valid">{{ isEditing() ? 'Guardar cambios' : 'Crear receta' }}</button>

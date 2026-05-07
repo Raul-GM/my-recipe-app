@@ -92,6 +92,26 @@ textarea {
   margin-top: 0.1rem;
 }
 
+.rating_stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s ease;
+  &:hover,
+  &.filled {
+    color: #ffb300;
+  }
+}
+
 .submit-btn {
   background: $primary;
   color: #fff;

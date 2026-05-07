@@ -14,4 +14,6 @@ export interface Recipe {
   instructions: string;
   category: RecipeCategory;
   imageUrl: string;
+  rating?: number;
+  notes?: string;
 }

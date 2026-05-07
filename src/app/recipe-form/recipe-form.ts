@@ -30,10 +30,12 @@ export class RecipeFormComponent {
     this.form = this.fb.group({
       name: ['', Validators.required],
       category: ['', Validators.required],
+      rating: [null],
       ingredients: this.fb.array([
         this.fb.control('', Validators.required)
       ], Validators.required),
-      instructions: ['', Validators.required]
+      instructions: ['', Validators.required],
+      notes: ['']
     });
 
     const id = this.route.snapshot.paramMap.get('id');
@@ -45,7 +47,9 @@ export class RecipeFormComponent {
         this.form.patchValue({
           name: recipe.name,
           category: recipe.category,
-          instructions: recipe.instructions
+          instructions: recipe.instructions,
+          rating: recipe.rating || null,
+          notes: recipe.notes || ''
         });
         this.ingredients.clear();
         recipe.ingredients.forEach(ing => {
@@ -70,8 +74,10 @@ export class RecipeFormComponent {
       const recipeData = {
         name: this.form.value.name,
         category: this.form.value.category as RecipeCategory,
+        rating: this.form.value.rating || null,
         ingredients: this.form.value.ingredients.filter((i: string) => i.trim() !== ''),
         instructions: this.form.value.instructions,
+        notes: this.form.value.notes || '',
         imageUrl: 'https://images.unsplash.com/photo-1466632311177-d3d6396e9521?q=80&w=2000'
       };
 

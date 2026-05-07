@@ -14,6 +14,13 @@
       </div>
       <div class="recipe-detail__meta">
         <span class="recipe-detail__badge">{{ recipe()!.category }}</span>
+        @if (recipe()!.rating) {
+          <span class="recipe-detail__rating">
+            @for (star of [1,2,3,4,5]; track star) {
+              <span class="star" [class.filled]="star <= recipe()!.rating!">★</span>
+            }
+          </span>
+        }
       </div>
       <h3 class="recipe-detail__subtitle">Ingredientes</h3>
       <ul class="recipe-detail__ingredients">
@@ -23,6 +30,10 @@
       </ul>
       <h3 class="recipe-detail__subtitle">Preparación</h3>
       <p class="recipe-detail__instructions">{{ recipe()!.instructions }}</p>
+      @if (recipe()!.notes) {
+        <h3 class="recipe-detail__subtitle">Notas</h3>
+        <p class="recipe-detail__notes">{{ recipe()!.notes }}</p>
+      }
     </div>
   } @else {
     <div class="recipe-detail__empty" role="status" aria-live="polite">

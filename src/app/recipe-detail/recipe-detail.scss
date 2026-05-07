@@ -42,6 +42,27 @@ $background: #f5f7fa;
   letter-spacing: 0.02em;
 }
 
+.recipe-detail__rating {
+  margin-left: 0.75rem;
+  .star {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    &.filled {
+      color: #ffb300;
+    }
+  }
+}
+
+.recipe-detail__notes {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 3px solid $accent;
+}
+
 .recipe-detail__subtitle {
   font-size: 1.1rem;
   font-weight: 700;
